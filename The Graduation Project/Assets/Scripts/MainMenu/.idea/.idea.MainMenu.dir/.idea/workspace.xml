@@ -8,13 +8,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/Desktop/Graduation-Project10012023saveandload/The Graduation Project/Assets/Scripts/MainMenu/MainMenu.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../DataPersistence/Data/AttributesData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../DataPersistence/Data/GameData.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../DataPersistence/DataPersistenceManager.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../DataPersistence/FileDataHandler.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../DataPersistence/IDataPersistence.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConfirmationPopupMenu.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/MainMenu.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MainMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Menu.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SaveSlot.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/SaveSlotsMenu.cs" root0="SKIP_HIGHLIGHTING" />
@@ -52,6 +53,9 @@
       <updated>1673269058777</updated>
       <workItem from="1673269065112" duration="20837000" />
       <workItem from="1673300273122" duration="12000" />
+      <workItem from="1674063550016" duration="179000" />
+      <workItem from="1674063778798" duration="19000" />
+      <workItem from="1674063836300" duration="41000" />
     </task>
     <servers />
   </component>

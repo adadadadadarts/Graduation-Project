@@ -70,4 +70,9 @@ public class MainMenu : Menu
     {
         this.gameObject.SetActive(false);
     }
+	public void QuitGame()
+	{
+    Debug.Log("QUIT!");
+	//Application.Quit();
+	}
 }
