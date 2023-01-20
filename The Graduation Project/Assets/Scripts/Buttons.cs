@@ -7,7 +7,7 @@ public class Buttons : MonoBehaviour
 {
     public void StartButton()
     {
-        SceneManager.LoadScene("SaveScene");
+        SceneManager.LoadScene("MainMenu");
         
     }
     
