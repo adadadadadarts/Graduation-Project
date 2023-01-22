@@ -1455,7 +1455,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4138645192141334089, guid: 5917835fec078c945b26633640200936, type: 3}
       propertyPath: useEncryption
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4138645192141334089, guid: 5917835fec078c945b26633640200936, type: 3}
       propertyPath: autoSaveTimeSeconds
