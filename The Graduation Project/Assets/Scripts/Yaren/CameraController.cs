@@ -7,16 +7,6 @@ public class CameraController : MonoBehaviour
 {
     public GameObject camera;
 
-    public void Start()
-    {
-
-    }
-
-    public void Update()
-    {
-        
-    }
-
     public void LeftArrow()
     {
         if(camera.transform.position.x > -52) camera.transform.position = new Vector3(camera.transform.position.x - 18, camera.transform.position.y, -10f);
