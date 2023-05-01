@@ -4,30 +4,22 @@ using UnityEngine;
 
 public class BeginnerCrew : MonoBehaviour
 {
-    
-    public GameObject spritePrefab;
-    public Vector3 spawnPosition;
+    public GameObject[] objects; // sahnedeki tüm gameobjectleri içeren bir dizi
 
-    void SpawnSprite() {
-        string[] spriteNames = GetSpriteNames();
-        int randomIndex = Random.Range(0, spriteNames.Length);
-        string randomSpriteName = spriteNames[randomIndex];
-        Sprite randomSprite = Resources.Load<Sprite>("UI/" + randomSpriteName);
-
-        GameObject newSprite = Instantiate(spritePrefab, spawnPosition, Quaternion.identity);
-        newSprite.GetComponent<SpriteRenderer>().sprite = randomSprite;
-        newSprite.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
-    }
-
-    string[] GetSpriteNames() {
-        List<string> spriteNames = new List<string>();
-        Object[] sprites = Resources.LoadAll("Characters", typeof(Sprite));
-
-        foreach (Object sprite in sprites) {
-            spriteNames.Add(sprite.name);
+    public Transform spawnpoint2;
+    public Transform spawnpoint3;
+    void Start()
+    {
+        // Rastgele iki gameobject seç
+        int randomIndex1 = Random.Range(0, objects.Length);
+        int randomIndex2 = Random.Range(0, objects.Length);
+        while (randomIndex2 == randomIndex1) // Aynı gameobject seçilmesini engellemek için
+        {
+            randomIndex2 = Random.Range(0, objects.Length);
         }
-
-        return spriteNames.ToArray();
+    
+        Instantiate(objects[randomIndex1], spawnpoint2.position, Quaternion.identity);
+        Instantiate(objects[randomIndex2], spawnpoint3.position, Quaternion.identity);
     }
     
 }
