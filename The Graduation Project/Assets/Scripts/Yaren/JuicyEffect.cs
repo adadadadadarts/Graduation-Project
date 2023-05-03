@@ -6,7 +6,7 @@ public class JuicyEffect : MonoBehaviour
 {
     public float verticalOffset = 0.1f; // Kaç birim yukarı-aşağı hareket edeceği
     
-    private Vector3 originalPosition;
+    public Vector3 originalPosition;
     
     
 
