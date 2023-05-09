@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7269442652570500043}
   - component: {fileID: 7269442652570500040}
   - component: {fileID: 3348091068355264093}
+  - component: {fileID: 5028994162166523126}
   m_Layer: 0
   m_Name: Tim
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7269442652570500043
 SpriteRenderer:
@@ -99,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   verticalOffset: 0.018
+  originalPosition: {x: 0, y: 0, z: 0}
 --- !u!114 &3348091068355264093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,3 +117,38 @@ MonoBehaviour:
   stamina: 0
   thirst: 0
   hunger: 0
+--- !u!70 &5028994162166523126
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7269442652570500045}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.3807275}
+  m_Size: {x: 1.65, y: 2.7385523}
+  m_Direction: 0
