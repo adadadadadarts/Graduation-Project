@@ -1,0 +1,9 @@
+Konum              X          Y
+----------       -----      -----
+Sol Üst          -66         34
+Sol Alt          -66        -34
+Sağ Üst          64          34
+Sağ Alt          64         -34
+
+Width : 132 
+Height : 70
