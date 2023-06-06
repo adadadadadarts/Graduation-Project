@@ -9,6 +9,8 @@ public class Outliner : MonoBehaviour
 
     private Renderer objectRenderer; // Objeyi rendere etmek için kullanılan bileşen
 
+    private bool isOn;
+
     private void Start()
     {
         objectRenderer = GetComponent<Renderer>(); // Renderer bileşenini al
@@ -17,11 +19,16 @@ public class Outliner : MonoBehaviour
 
     private void OnMouseEnter()
     {
+        isOn = true;
         objectRenderer.material = outlineMaterial; // Objeye outline materyalini uygula
+        
     }
 
     private void OnMouseExit()
     {
+        isOn = false;
         objectRenderer.material = defaultMaterial; // Objeye varsayılan materyali uygula
     }
+    
+    
 }
