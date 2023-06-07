@@ -1971,7 +1971,7 @@ GameObject:
   - component: {fileID: 8481901884410211168}
   - component: {fileID: 69844758518582210}
   m_Layer: 5
-  m_Name: UICanvas
+  m_Name: Tree canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
