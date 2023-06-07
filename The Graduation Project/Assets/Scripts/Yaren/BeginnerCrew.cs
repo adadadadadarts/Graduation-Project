@@ -19,7 +19,11 @@ public class BeginnerCrew : MonoBehaviour
         }
     
         Instantiate(objects[randomIndex1], spawnpoint2.position, Quaternion.identity);
+        
+        
         Instantiate(objects[randomIndex2], spawnpoint3.position, Quaternion.identity);
+        
+        
     }
     
 }

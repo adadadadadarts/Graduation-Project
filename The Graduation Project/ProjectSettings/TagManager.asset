@@ -8,6 +8,9 @@ TagManager:
   - rightArrow
   - topArrow
   - bottomArrow
+  - Building
+  - Obstacle
+  - Crew
   layers:
   - Default
   - TransparentFX
