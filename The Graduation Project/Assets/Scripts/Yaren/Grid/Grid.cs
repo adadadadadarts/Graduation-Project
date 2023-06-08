@@ -89,10 +89,10 @@ public class Grid<TGridObject> : MonoBehaviour
             }
 
             // Obje sayısına bakılmaksızın objeleri oluştur
-            SpawnObjects(treePrefab, spawnPoints, treeWidth, treeHeight, 50);
-            SpawnObjects(wellPrefab, spawnPoints, wellWidth, wellHeight, 15);
-            SpawnObjects(rockPrefab, spawnPoints, rockWidth, rockHeight, 50);
-            SpawnObjects(minePrefab, spawnPoints, mineWidth, mineHeight, 15);
+            SpawnObjects(treePrefab, spawnPoints, treeWidth, treeHeight, 1);
+            SpawnObjects(wellPrefab, spawnPoints, wellWidth, wellHeight, 1);
+            SpawnObjects(rockPrefab, spawnPoints, rockWidth, rockHeight, 1);
+            SpawnObjects(minePrefab, spawnPoints, mineWidth, mineHeight, 1);
         }
     }
     
