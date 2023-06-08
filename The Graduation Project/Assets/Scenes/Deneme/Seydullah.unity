@@ -133,7 +133,6 @@ GameObject:
   m_Component:
   - component: {fileID: 13582715}
   - component: {fileID: 13582714}
-  - component: {fileID: 13582713}
   - component: {fileID: 13582716}
   - component: {fileID: 13582717}
   - component: {fileID: 13582718}
@@ -144,18 +143,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &13582713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 13582712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba5780619331c5d4aa1b734582b33a12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &13582714
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -318,7 +305,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1266097869}
   - component: {fileID: 1266097868}
-  - component: {fileID: 1266097867}
   - component: {fileID: 1266097866}
   - component: {fileID: 1266097870}
   - component: {fileID: 1266097871}
@@ -342,18 +328,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
---- !u!114 &1266097867
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1266097865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba5780619331c5d4aa1b734582b33a12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &1266097868
 SpriteRenderer:
   m_ObjectHideFlags: 0
