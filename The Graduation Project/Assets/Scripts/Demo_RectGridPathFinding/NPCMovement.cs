@@ -7,7 +7,7 @@ public class NPCMovement : MonoBehaviour
 {
     public float Speed = 1.0f;
     public Queue<Vector2> mWayPoints = new Queue<Vector2>();
-
+    //public Rigidbody2D rb;
     PathFinder<Vector2Int> mPathFinder = new AStarPathFinder<Vector2Int>();
 
     // Start is called before the first frame update
