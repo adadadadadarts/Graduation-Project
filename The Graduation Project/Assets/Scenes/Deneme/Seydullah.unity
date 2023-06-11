@@ -697,10 +697,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c32029f774f7943970180f662826ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treePrefab: {fileID: 8208748860713836023, guid: ca3645c1fb5d2bb418739bbaaed587ca, type: 3}
-  rockPrefab: {fileID: 3222400059800659526, guid: 409717cf7b063ad47b27bb19f033617f, type: 3}
-  wellPrefab: {fileID: 2106330022653821404, guid: b2a87372b6c8dfe44baf5329fea3db8b, type: 3}
-  minePrefab: {fileID: 246935145517494749, guid: 1dad5f84d5cb3ff4eb76bac3390cdbf5, type: 3}
 --- !u!4 &1290964657
 Transform:
   m_ObjectHideFlags: 0

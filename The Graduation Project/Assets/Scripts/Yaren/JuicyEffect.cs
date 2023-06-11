@@ -16,9 +16,11 @@ public class JuicyEffect : MonoBehaviour
         originalPosition = transform.position;
     }
 
+    /*
     private void Update()
     {
+        originalPosition = transform.position;
         // Sprite'ı verticalOffset birim yukarı ve aşağı hareket ettiriyoruz
         transform.position = new Vector3(originalPosition.x, originalPosition.y + Mathf.Sin(Time.time * 5) * verticalOffset, originalPosition.z);
-    }
+    }*/
 }

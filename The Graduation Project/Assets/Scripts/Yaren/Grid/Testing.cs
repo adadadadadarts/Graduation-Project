@@ -12,7 +12,7 @@ public class Testing : MonoBehaviour
     public GameObject wellPrefab;
     public GameObject minePrefab;
 
-    private Grid<bool> grid;
+    public Grid<bool> grid;
 
     void Start()
     {
@@ -31,5 +31,10 @@ public class Testing : MonoBehaviour
         {
             Debug.Log(grid.GetValue(UtilsClass.GetMouseWorldPosition()));
         }
+    }
+    
+    public List<GameObject> GetListObjects()
+    {
+        return grid.SpawnedObjects;
     }
 }

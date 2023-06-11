@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using GameAI.PathFinding;
 
 public class RectGrid_Viz : MonoBehaviour
 {
+    private Testing tst;
+    
     // the max number of columns in the grid.
     public int mX;
     // the max number of rows in the grid
@@ -33,6 +36,7 @@ public class RectGrid_Viz : MonoBehaviour
 
     public Transform mDestination;
     public NPCMovement mNPCMovement;
+
 
     // Construct a grid with the max cols and rows.
     protected void Construct(int numX, int numY)
@@ -83,14 +87,21 @@ public class RectGrid_Viz : MonoBehaviour
     }
 
     private void Start()
-    {
-        // Constryct the grid and the cell game objects.
-        Construct(mX, mY);
+{
+    // Testing sınıfının referansını al
+    tst = FindObjectOfType<Testing>();
 
-        // Reset the camera to a proper size and position.
-        ResetCamera();
-    }
+    // Construct the grid and the cell game objects.
+    Construct(mX, mY);
 
+    // Reset the camera to a proper size and position.
+    ResetCamera();
+
+    SetGridCellsNotWalkable();
+
+    SetInitialGridCellsNotWalkable();
+}
+    
     // get neighbour cells for a given cell.
     public List<Node<Vector2Int>> GetNeighbourCells(Node<Vector2Int> loc)
     {
@@ -218,8 +229,27 @@ public class RectGrid_Viz : MonoBehaviour
             GameObject obj = hit.transform.gameObject;
             RectGridCell_Viz sc = obj.GetComponent<RectGridCell_Viz>();
             ToggleWalkable(sc);
+
+            // NPC'ye en yakın Walkable hücreye gitmesini sağla
+            if (!sc.RectGridCell.IsWalkable)
+            {
+                RectGridCell_Viz closestWalkableCell = FindClosestWalkableCell(sc.RectGridCell);
+                if (closestWalkableCell != null)
+                {
+                    Vector3 pos = mDestination.position;
+                    pos.x = closestWalkableCell.RectGridCell.Value.x;
+                    pos.y = closestWalkableCell.RectGridCell.Value.y;
+                    mDestination.position = pos;
+
+                    // Set the destination to the NPC.
+                    mNPCMovement.SetDestination(this, closestWalkableCell.RectGridCell);
+                }
+            }
         }
     }
+
+
+
     public void ToggleWalkable(RectGridCell_Viz sc)
     {
         if (sc == null)
@@ -340,4 +370,131 @@ public class RectGrid_Viz : MonoBehaviour
         RectGridCell_Viz sc = obj.GetComponent<RectGridCell_Viz>();
         sc.SetInnerColor(COLOR_ADD_TO_CLOSED_LIST);
     }
+    
+    void SetGridCellsNotWalkable()
+    {
+        int[,] coordinates = {
+            {60, 33}, {61, 33}, {60, 34}, {61, 34}, {60, 35},
+            {61, 35}, {66, 35}, {65, 35}, {64, 35}, {63, 35},
+            {62, 35}, {62, 36}, {63, 36}, {64, 36}, {65, 36},
+            {66, 36}, {66, 37}, {65, 37}, {64, 37}, {63, 38},
+            {62, 38}, {64, 38}, {65, 38}, {66, 38}, {66, 39},
+            {65, 39}, {64, 39}, {63, 39}, {62, 39}, {74, 35},
+            {73, 35}, {74, 36}, {73, 36}, {74, 37}, {74, 38},
+            {73, 38}
+        };
+
+        for (int i = 0; i < coordinates.GetLength(0); i++)
+        {
+            int x = coordinates[i, 0];
+            int y = coordinates[i, 1];
+
+            RectGridCell_Viz cell = mRectGridCellGameObjects[x, y].GetComponent<RectGridCell_Viz>();
+            ToggleWalkable(cell);
+            //Debug.Log("Cell at (" + x + ", " + y + "): " + cell);
+        }
+    }
+
+    void SetInitialGridCellsNotWalkable()
+    {
+        // Set the initial state of grid cells in the list to NOT_WALKABLE.
+    var listObjects = tst.GetListObjects();
+    foreach (var obj in listObjects)
+    {
+        float x = obj.transform.position.x;
+        float y = obj.transform.position.y;
+
+        if (x >= 0 && x < mRectGridCellGameObjects.GetLength(0) && y >= 0 && y < mRectGridCellGameObjects.GetLength(1))
+        {
+            int gridX = Mathf.FloorToInt(x);
+            int gridY = Mathf.FloorToInt(y);
+
+            RectGridCell_Viz initialCell = mRectGridCellGameObjects[gridX, gridY].GetComponent<RectGridCell_Viz>();
+            ToggleWalkable(initialCell);
+
+            // Set the cells to the right and above as non-walkable
+            if (gridX < mRectGridCellGameObjects.GetLength(0) - 1)
+            {
+                RectGridCell_Viz rightCell = mRectGridCellGameObjects[gridX + 1, gridY].GetComponent<RectGridCell_Viz>();
+                ToggleWalkable(rightCell);
+            }
+
+            if (gridY < mRectGridCellGameObjects.GetLength(1) - 1)
+            {
+                RectGridCell_Viz topCell = mRectGridCellGameObjects[gridX, gridY + 1].GetComponent<RectGridCell_Viz>();
+                ToggleWalkable(topCell);
+            }
+
+            // Set the cells to the left and below as non-walkable
+            if (gridX > 0)
+            {
+                RectGridCell_Viz leftCell = mRectGridCellGameObjects[gridX - 1, gridY].GetComponent<RectGridCell_Viz>();
+                ToggleWalkable(leftCell);
+            }
+
+            if (gridY > 0)
+            {
+                RectGridCell_Viz bottomCell = mRectGridCellGameObjects[gridX, gridY - 1].GetComponent<RectGridCell_Viz>();
+                ToggleWalkable(bottomCell);
+            }
+
+            // Set the diagonal cells as non-walkable
+            if (gridX < mRectGridCellGameObjects.GetLength(0) - 1 && gridY < mRectGridCellGameObjects.GetLength(1) - 1)
+            {
+                RectGridCell_Viz rightTopCell = mRectGridCellGameObjects[gridX + 1, gridY + 1].GetComponent<RectGridCell_Viz>();
+                ToggleWalkable(rightTopCell);
+            }
+
+            if (gridX > 0 && gridY < mRectGridCellGameObjects.GetLength(1) - 1)
+            {
+                RectGridCell_Viz leftTopCell = mRectGridCellGameObjects[gridX - 1, gridY + 1].GetComponent<RectGridCell_Viz>();
+                ToggleWalkable(leftTopCell);
+            }
+
+            if (gridX < mRectGridCellGameObjects.GetLength(0) - 1 && gridY > 0)
+            {
+                RectGridCell_Viz rightBottomCell = mRectGridCellGameObjects[gridX + 1, gridY - 1].GetComponent<RectGridCell_Viz>();
+                ToggleWalkable(rightBottomCell);
+            }
+
+            if (gridX > 0 && gridY > 0)
+            {
+                RectGridCell_Viz leftBottomCell = mRectGridCellGameObjects[gridX - 1, gridY - 1].GetComponent<RectGridCell_Viz>();
+                ToggleWalkable(leftBottomCell);
+            }
+        }
+    }
+    }
+    
+    private RectGridCell_Viz FindClosestWalkableCell(RectGridCell targetCell)
+    {
+        int x = targetCell.Value.x;
+        int y = targetCell.Value.y;
+
+        int radius = 1;
+        int maxRadius = Mathf.Max(mX, mY);
+
+        while (radius <= maxRadius)
+        {
+            for (int i = x - radius; i <= x + radius; i++)
+            {
+                for (int j = y - radius; j <= y + radius; j++)
+                {
+                    if (i >= 0 && i < mX && j >= 0 && j < mY)
+                    {
+                        RectGridCell_Viz cell = mRectGridCellGameObjects[i, j].GetComponent<RectGridCell_Viz>();
+                        if (cell.RectGridCell.IsWalkable)
+                        {
+                            return cell;
+                        }
+                    }
+                }
+            }
+
+            radius++;
+        }
+
+        return null; // No walkable cell found
+    }
+
 }

@@ -7,18 +7,22 @@ using CodeMonkey.Utils;
 
 public class Grid<TGridObject> : MonoBehaviour
 {
+    public List<GameObject> SpawnedObjects;
+    
     public event EventHandler<OnGridValueChangedEventArgs> OnGridValueChanged;
     public class OnGridValueChangedEventArgs : EventArgs {
         public int x;
         public int y;
-        
     }
     
     private int width, height;
     private float cellSize;
     private Vector3 originPosition;
     private TGridObject[,] gridArray;
-    private TextMesh[,] debugTextArray; //multi-dimensional array with 2 dimensions
+    private TextMesh[,] debugTextArray;
+    //multi-dimensional array with 2 dimensions
+    
+    List<Vector3> spawnPoints = new List<Vector3>();
     
     // Width and height of the tree object in cells
     private int treeWidth = 2;
@@ -40,6 +44,8 @@ public class Grid<TGridObject> : MonoBehaviour
     //A constructor that recieves width and height
     public Grid(int width, int height, float cellSize, Vector3 originPosition, GameObject treePrefab, GameObject wellPrefab, GameObject minePrefab, GameObject rockPrefab)
     {
+        SpawnedObjects = new List<GameObject>();
+        
         this.height = height;
         this.width = width;
         this.cellSize = cellSize;
@@ -89,10 +95,10 @@ public class Grid<TGridObject> : MonoBehaviour
             }
 
             // Obje sayısına bakılmaksızın objeleri oluştur
-            SpawnObjects(treePrefab, spawnPoints, treeWidth, treeHeight, 1);
-            SpawnObjects(wellPrefab, spawnPoints, wellWidth, wellHeight, 1);
-            SpawnObjects(rockPrefab, spawnPoints, rockWidth, rockHeight, 1);
-            SpawnObjects(minePrefab, spawnPoints, mineWidth, mineHeight, 1);
+            SpawnObjects(treePrefab, spawnPoints, treeWidth, treeHeight, 20);
+            SpawnObjects(wellPrefab, spawnPoints, wellWidth, wellHeight, 20);
+            SpawnObjects(rockPrefab, spawnPoints, rockWidth, rockHeight, 20);
+            SpawnObjects(minePrefab, spawnPoints, mineWidth, mineHeight, 20);
         }
     }
     
@@ -118,6 +124,8 @@ public class Grid<TGridObject> : MonoBehaviour
                 {
                     GameObject objectInstance = Instantiate(prefab, objectPosition, Quaternion.identity);
                     // Gerekli diğer ayarlamaları yap
+
+                    SpawnedObjects.Add(objectInstance);
 
                     isSpawned = true;
                 }
@@ -222,4 +230,5 @@ public class Grid<TGridObject> : MonoBehaviour
         GetXY(worldPosition, out x, out y);
         return GetValue(x, y);
     }
+    
 }
