@@ -1,0 +1,51 @@
+
+  using UnityEngine;
+
+public class NesneHareket : MonoBehaviour
+{
+    private bool nesneSecildi = false;
+    private Vector3 tıklamaNoktasi;
+    private Vector3 başlangıçKonumu;
+    private Plane düzlem;
+
+    private void Start()
+    {
+        düzlem = new Plane(Vector3.up, transform.position);
+    }
+
+    private void Update()
+    {
+        if (nesneSecildi)
+        {
+            Ray fareIşını = Camera.main.ScreenPointToRay(Input.mousePosition);
+            float tıklamaMesafesi;
+
+            if (düzlem.Raycast(fareIşını, out tıklamaMesafesi))
+            {
+                Vector3 yeniPozisyon = fareIşını.GetPoint(tıklamaMesafesi);
+                transform.position = başlangıçKonumu + (yeniPozisyon - tıklamaNoktasi);
+            }
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        Ray fareIşını = Camera.main.ScreenPointToRay(Input.mousePosition);
+        float tıklamaMesafesi;
+
+        if (düzlem.Raycast(fareIşını, out tıklamaMesafesi))
+        {
+            nesneSecildi = true;
+            tıklamaNoktasi = fareIşını.GetPoint(tıklamaMesafesi);
+            başlangıçKonumu = transform.position;
+        }
+    }
+
+    private void OnMouseUp()
+    {
+        nesneSecildi = false;
+    }
+}
+
+   
+
